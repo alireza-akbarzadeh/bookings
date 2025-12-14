@@ -1,0 +1,28 @@
+{{template "base" .}}
+
+{{define "content"}}
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-neutral-900 rounded-2xl shadow-xl border border-neutral-700">
+
+    <h1 class="text-4xl font-extrabold text-rose-400 mb-4">
+        About Page
+    </h1>
+
+    <p class="text-indigo-300 text-lg mb-4">
+        This is a new test section demonstrating dynamic content.
+    </p>
+
+    <div class="p-4 rounded-xl bg-neutral-800 border border-neutral-700 text-rose-300 text-lg">
+        {{if ne (index .StringMap "remote_ip") ""}}
+            <span class="font-semibold text-green-400">Your remote IP address:</span>
+            <span class="text-white">{{index .StringMap "remote_ip"}}</span>
+        {{else}}
+            <span class="text-yellow-300 font-semibold">IP address not detected.</span>
+            <span class="text-neutral-300">Visit the
+                <a class="text-blue-400 underline font-bold hover:text-blue-300" href="/">Home Page</a>
+                so I can set it.
+            </span>
+        {{end}}
+    </div>
+
+</div>
+{{end}}
