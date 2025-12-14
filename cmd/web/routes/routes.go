@@ -6,7 +6,6 @@ import (
 	"github.com/alireza-akbarzadeh/bookings/pkg/config"
 	"github.com/alireza-akbarzadeh/bookings/pkg/handlers"
 	"github.com/alireza-akbarzadeh/bookings/pkg/middleware"
-	log "github.com/alireza-akbarzadeh/bookings/pkg/middleware"
 	"github.com/go-chi/chi"
 	chiMid "github.com/go-chi/chi/middleware"
 )
@@ -14,7 +13,7 @@ import (
 func Setup(app *config.AppConfig) http.Handler {
 	mux := chi.NewRouter()
 	mux.Use(chiMid.Recoverer)
-	mux.Use(log.Logger())
+	mux.Use(middleware.Logger())
 	mux.Use(middleware.NoSurf(app))
 	mux.Use(middleware.SessionLoad(app))
 
